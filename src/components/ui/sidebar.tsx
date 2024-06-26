@@ -173,6 +173,7 @@ function SidebarComponent(props: any) {
                           alt="en"
                           height={20}
                           width={20}
+                          className='h-5 w-5'
                         />
                         Eng(US)
                         <ChevronDown />
@@ -234,7 +235,7 @@ function SidebarComponent(props: any) {
       </div>
 
       {/* Main Section */}
-      <div className="p-8 ml-[345px] mt-[120px] bg-[#F8F9FA] min-h-[calc(100vh-130px)] h-auto">
+      <div className="p-8 ml-[345px] mt-[120px] bg-[#F8F9FA] min-h-[calc(100vh-130px)] h-auto w-auto">
         {props.pages}
       </div>
     </div>
