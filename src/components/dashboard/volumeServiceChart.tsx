@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  BarChart,
-  Bar,
-} from 'recharts'
+import { YAxis, BarChart, Bar } from 'recharts'
 
 const data = [
   {
@@ -54,7 +46,7 @@ const data = [
   },
 ]
 
-function TargetChartComponent() {
+function VolumeServiceChart() {
   const getPath = (
     x: any,
     y: any,
@@ -85,7 +77,7 @@ function TargetChartComponent() {
     <div style={{ width: '100%' }}>
       <BarChart
         width={371}
-        height={300}
+        height={200}
         data={data}
         barSize={12}
         margin={{
@@ -103,4 +95,4 @@ function TargetChartComponent() {
   )
 }
 
-export default TargetChartComponent
+export default VolumeServiceChart

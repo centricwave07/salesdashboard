@@ -1,9 +1,9 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import LineChartComponent from '@/components/ui/lineChartComponent'
-import BarChartComponent from '@/components/ui/barChartComponent'
-import SynchronizedLineChartComponent from '@/components/ui/synchronizedLineChart'
+import LineChartComponent from '@/components/dashboard/lineChartComponent'
+import BarChartComponent from '@/components/dashboard/barChartComponent'
+import SynchronizedLineChartComponent from '@/components/dashboard/synchronizedLineChart'
 import {
   Card,
   CardDescription,
@@ -16,7 +16,7 @@ import {
   DashboardCardDescription,
   DashboardCardHeader,
   DashboardCardTitle,
-} from '@/components/ui/dashboardCard'
+} from '@/components/dashboard/dashboardCard'
 import {
   BarChart,
   BriefcaseBusiness,
@@ -28,10 +28,10 @@ import {
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
-import TargetChartComponent from '@/components/ui/targetChartComponent'
+import TargetChartComponent from '@/components/dashboard/targetChartComponent'
 import TopProducts from '@/components/dashboard/topProducts'
-import VolumeServiceChart from '@/components/ui/volumeServiceChart'
-import MapCountryChart from '@/components/ui/mapCountryChart'
+import MapCountryChart from '@/components/dashboard/mapCountryChart'
+import VolumeServiceChart from '@/components/dashboard/volumeServiceChart'
 interface DataInterface {
   icon: any
   count: string
@@ -147,6 +147,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
       </div>
+
       {/* ------------------------------------------------------ */}
       <div className="flex gap-x-2">
         <DashboardCard className="w-auto">
@@ -264,8 +265,9 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
       </div>
+
       {/* ------------------------------------------------------ */}
-      <div className="flex gap-x-2">
+      {/* <div className="flex gap-x-2">
         <DashboardCard className="w-[645px]">
           <DashboardCardHeader>
             <DashboardCardTitle>
@@ -330,7 +332,7 @@ function Dashboard() {
             </div>
           </DashboardCardContent>
         </DashboardCard>
-      </div>
+      </div> */}
     </div>
   )
 }

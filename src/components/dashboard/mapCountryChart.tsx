@@ -18,4 +18,4 @@ const MapCountryChart = () => {
   );
 };
 
-export default MapCountryChart;
+export default MapCountryChart; 
