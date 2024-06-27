@@ -1,5 +1,5 @@
 import React from 'react'
-import { YAxis, BarChart, Bar } from 'recharts'
+import { YAxis, BarChart, Bar, ResponsiveContainer } from 'recharts'
 
 const data = [
   {
@@ -74,23 +74,35 @@ function VolumeServiceChart() {
   }
 
   return (
-    <div style={{ width: '100%' }}>
-      <BarChart
-        width={371}
-        height={200}
-        data={data}
-        barSize={12}
-        margin={{
-          top: 20,
-          right: 0,
-          left: -60,
-          bottom: 5,
-        }}
-      >
-        <YAxis tick={false} axisLine={false} tickLine={false} />
-        <Bar dataKey="pv" stackId="a" fill="#0095FF" shape={<TriangleBar />} />
-        <Bar dataKey="uv" stackId="a" fill="#00E096" shape={<TriangleBar />} />
-      </BarChart>
+    <div style={{ width: '100%', height: '200px' }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          width={371}
+          height={200}
+          data={data}
+          barSize={12}
+          margin={{
+            top: 20,
+            right: 0,
+            left: -60,
+            bottom: 5,
+          }}
+        >
+          <YAxis tick={false} axisLine={false} tickLine={false} />
+          <Bar
+            dataKey="pv"
+            stackId="a"
+            fill="#0095FF"
+            shape={<TriangleBar />}
+          />
+          <Bar
+            dataKey="uv"
+            stackId="a"
+            fill="#00E096"
+            shape={<TriangleBar />}
+          />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   )
 }

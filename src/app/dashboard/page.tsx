@@ -1,9 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import LineChartComponent from '@/components/dashboard/lineChartComponent'
-import BarChartComponent from '@/components/dashboard/barChartComponent'
-import SynchronizedLineChartComponent from '@/components/dashboard/synchronizedLineChart'
 import {
   Card,
   CardDescription,
@@ -28,10 +25,45 @@ import {
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
-import TargetChartComponent from '@/components/dashboard/targetChartComponent'
-import TopProducts from '@/components/dashboard/topProducts'
-import MapCountryChart from '@/components/dashboard/mapCountryChart'
-import VolumeServiceChart from '@/components/dashboard/volumeServiceChart'
+import dynamic from 'next/dynamic'
+
+// import LineChartComponent from '@/components/dashboard/lineChartComponent'
+// import BarChartComponent from '@/components/dashboard/barChartComponent'
+// import SynchronizedLineChartComponent from '@/components/dashboard/synchronizedLineChart'
+// import TargetChartComponent from '@/components/dashboard/targetChartComponent'
+// import TopProducts from '@/components/dashboard/topProducts'
+// import MapCountryChart from '@/components/dashboard/mapCountryChart'
+// import VolumeServiceChart from '@/components/dashboard/volumeServiceChart'
+
+const LineChartComponent = dynamic(
+  () => import('@/components/dashboard/lineChartComponent'),
+  { ssr: false },
+)
+const BarChartComponent = dynamic(
+  () => import('@/components/dashboard/barChartComponent'),
+  { ssr: false },
+)
+const SynchronizedLineChartComponent = dynamic(
+  () => import('@/components/dashboard/synchronizedLineChart'),
+  { ssr: false },
+)
+const TargetChartComponent = dynamic(
+  () => import('@/components/dashboard/targetChartComponent'),
+  { ssr: false },
+)
+const TopProducts = dynamic(
+  () => import('@/components/dashboard/topProducts'),
+  { ssr: false },
+)
+const MapCountryChart = dynamic(
+  () => import('@/components/dashboard/mapCountryChart'),
+  { ssr: false },
+)
+const VolumeServiceChart = dynamic(
+  () => import('@/components/dashboard/volumeServiceChart'),
+  { ssr: false },
+)
+
 interface DataInterface {
   icon: any
   count: string
@@ -78,8 +110,8 @@ const dashboards: DataInterface[] = [
 function Dashboard() {
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex gap-x-8">
-        <DashboardCard className="w-auto">
+      <div className="flex gap-x-8 w-full">
+        <DashboardCard className="w-3/5">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="flex justify-between">
@@ -99,12 +131,12 @@ function Dashboard() {
               </div>
             </DashboardCardDescription>
           </DashboardCardHeader>
-          <DashboardCardContent className="flex gap-x-8">
+          <DashboardCardContent className="flex justify-between gap-x-8">
             {dashboards?.map((o, i) => {
               return (
                 <div key={i}>
                   <Card
-                    className={`border-0 max-w-[180px]`}
+                    className={`border-0 max-w-[180px] w-auto`}
                     style={{ backgroundColor: o.bgColor }}
                   >
                     <CardHeader>
@@ -134,7 +166,7 @@ function Dashboard() {
             })}
           </DashboardCardContent>
         </DashboardCard>
-        <DashboardCard>
+        <DashboardCard className='w-2/5'>
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -142,15 +174,15 @@ function Dashboard() {
               </div>
             </DashboardCardTitle>
           </DashboardCardHeader>
-          <DashboardCardContent>
-            <LineChartComponent />
+          <DashboardCardContent >
+              <LineChartComponent />
           </DashboardCardContent>
         </DashboardCard>
       </div>
 
       {/* ------------------------------------------------------ */}
-      <div className="flex gap-x-2">
-        <DashboardCard className="w-auto">
+      <div className="flex gap-x-8">
+        <DashboardCard className="w-2/6">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -163,7 +195,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-auto">
+        <DashboardCard className="w-2/6">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -173,8 +205,8 @@ function Dashboard() {
           </DashboardCardHeader>
           <DashboardCardContent>
             <SynchronizedLineChartComponent />
-            <Separator className="my-4" />
-            <div className="flex h-5 justify-center w-full items-center space-x-4 text-sm">
+            <Separator />
+            <div className="flex h-5 justify-center w-full items-center space-x-4 text-sm mt-8">
               <div>
                 <div className="flex gap-x-2 items-center">
                   <div>
@@ -185,7 +217,7 @@ function Dashboard() {
                       width={19}
                     />
                   </div>
-                  <div className="text-base leading-[30px] text-[#96A5B8]">
+                  <div className="2xl:text-base 2xl:leading-[30px] text-[#96A5B8]">
                     Last Month
                   </div>
                 </div>
@@ -216,7 +248,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-auto">
+        <DashboardCard className="w-2/6">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -267,8 +299,8 @@ function Dashboard() {
       </div>
 
       {/* ------------------------------------------------------ */}
-      {/* <div className="flex gap-x-2">
-        <DashboardCard className="w-[645px]">
+      <div className="flex gap-x-8">
+        <DashboardCard className="w-6/12">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -281,7 +313,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-[420px]">
+        <DashboardCard className="w-3/12">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -294,7 +326,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-auto">
+        <DashboardCard className="w-3/12">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -332,7 +364,7 @@ function Dashboard() {
             </div>
           </DashboardCardContent>
         </DashboardCard>
-      </div> */}
+      </div>
     </div>
   )
 }
