@@ -1,10 +1,17 @@
+import Login from '@/app/login/page'
 import SidebarComponent from '../ui/sidebar'
+import { createClient } from '../../lib/supabase/server'
+
+async function Sidebar(props: any) {
+  const supabase = createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
 
-function Sidebar(props: any) {
   return (
     <div>
-      <SidebarComponent pages={props.pages} />
+      {user ? <SidebarComponent user={user} pages={props.pages} /> : <Login />}
     </div>
   )
 }

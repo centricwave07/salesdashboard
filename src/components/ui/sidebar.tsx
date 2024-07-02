@@ -25,6 +25,8 @@ import {
   DropdownMenuTrigger,
 } from './dropdown-menu'
 import { Button } from './button'
+import { useCallback, useEffect, useState } from 'react'
+import { createClient } from '../../lib/supabase/client'
 
 interface MenuInterface {
   title: string
@@ -85,6 +87,38 @@ const menu: MenuInterface[] = [
 
 function SidebarComponent(props: any) {
   const pathname = usePathname().split('/')[1]
+  const supabase = createClient()
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<Record<string, any> | null>(null);
+
+ 
+  const getProfile = useCallback(async () => {
+    try {
+      setLoading(true)
+      const { data , error, status } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', props.user?.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setUser(data)
+      }
+    } catch (error) {
+      console.log('error', error)
+    } finally {
+      setLoading(false)
+    }
+  }, [props.user, supabase])
+
+  useEffect(() => {
+    getProfile()
+  }, [props.user, getProfile])
+
   return (
     <div>
       <div className="flex">
@@ -148,7 +182,12 @@ function SidebarComponent(props: any) {
               <div className="mt2 text-xs leading-4 font-medium">
                 Get access to all features on tetumbas
               </div>
-              <Button className='text-[#5D5FEF] mt-8 text-base font-semibold leading-6' variant={'secondary'}>Get Pro</Button>
+              <Button
+                className="text-[#5D5FEF] mt-8 text-base font-semibold leading-6"
+                variant={'secondary'}
+              >
+                Get Pro
+              </Button>
             </div>
           </div>
         </aside>
@@ -173,7 +212,7 @@ function SidebarComponent(props: any) {
                           alt="en"
                           height={20}
                           width={20}
-                          className='h-5 w-5'
+                          className="h-5 w-5"
                         />
                         Eng(US)
                         <ChevronDown />
@@ -196,37 +235,56 @@ function SidebarComponent(props: any) {
                       <Bell className="text-[#FFA412]" />
                     </div>
                   </div>
-                  <div className="flex gap-x-[14px]">
-                    <Image
-                      src="/images/user.jpeg"
-                      alt="profile"
-                      height={30}
-                      width={30}
-                      className="rounded-[8px] h-[60px] w-[60px]"
-                    />
-                    <div className="flex flex-col justify-center">
-                      <div>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger>
-                            <div className="flex gap-x-[14px]">
-                              <div className="text-base font-medium">Komal</div>
-                              <ChevronDown />
-                            </div>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent>
-                            <DropdownMenuLabel>Profile</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>Setting</DropdownMenuItem>
-                            <DropdownMenuItem>Status</DropdownMenuItem>
-                            <DropdownMenuItem>Update Password</DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>Logout</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                  {!loading && (
+                    <div className="flex gap-x-[14px]">
+                      <Image
+                        src="/images/user.jpeg"
+                        alt="profile"
+                        height={30}
+                        width={30}
+                        className="rounded-[8px] h-[60px] w-[60px]"
+                      />
+                      <div className="flex flex-col justify-center">
+                        <div>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger>
+                              <div className="flex gap-x-[14px]">
+                                <div className="text-xs font-medium capitalize">
+                                  {user?.first_name}{" "}{user?.last_name}
+                                </div>
+                                <ChevronDown />
+                              </div>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                              <DropdownMenuLabel>Profile</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <Link href="/account">Setting</Link>
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>Status</DropdownMenuItem>
+                              <DropdownMenuItem>
+                                Update Password
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <form action="/auth/signout" method="post">
+                                  <button
+                                    className="button block"
+                                    type="submit"
+                                  >
+                                    Sign out
+                                  </button>
+                                </form>
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </div>
+                        <div className="text-sm font-normal capitalize">
+                          {user?.role}
+                        </div>
                       </div>
-                      <div className="text-sm font-normal">Admin</div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { createClient } from '../../lib/supabase/server'
-import Dashboard from './dashboard'
+import AccountForm from './account-form'
 
 export default async function Account() {
   const supabase = createClient()
@@ -8,5 +8,5 @@ export default async function Account() {
     data: { user },
   } = await supabase.auth.getUser()
 
-  return <Dashboard user={user} />
+  return <AccountForm user={user} />
 }
