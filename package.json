@@ -11,8 +11,10 @@
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.1",
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/ssr": "^0.4.0",
@@ -21,10 +23,12 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.396.0",
     "next": "14.2.4",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
     "react-simple-maps": "^3.0.0",
     "recharts": "^2.13.0-alpha.4",
+    "sonner": "^1.5.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.1"

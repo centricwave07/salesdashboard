@@ -45,7 +45,6 @@ export async function signup(formData: FormData) {
 
     // const { data } = await supabase.auth.getUser()
 
-    console.log("user ----------------", data?.user)
     const profileData = {
       id: data?.user?.id,
       first_name: 'Komal',
