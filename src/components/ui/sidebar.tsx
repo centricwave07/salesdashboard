@@ -195,8 +195,8 @@ function SidebarComponent(props: any) {
         {/* Header Section */}
         <nav className="ml-[345px] fixed top-0 z-50 w-[calc(100%-345px)] bg-white shadow-md dark:bg-gray-800 dark:border-gray-700">
           <div className="grid grid-cols-3 py-[30px] px-10 gap-x-2">
-            <div className="text-4xl leading-[50.4px] font-semibold flex items-center">
-              Dashboard
+            <div className="text-4xl leading-[50.4px] font-semibold flex items-center capitalize">
+              {pathname}
             </div>
             <div className="flex items-center">
               <Input placeholder="Search here..." />
