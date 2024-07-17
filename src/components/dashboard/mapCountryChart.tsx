@@ -4,7 +4,7 @@ import countryData from "@/data/feature.json"
 
 const MapCountryChart = () => {
   return (
-    <div className='h-full'>
+    <div className='h-full map-path'>
       <ComposableMap>
         <Geographies geography={countryData} >
           {({ geographies }) =>

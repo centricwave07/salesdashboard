@@ -27,14 +27,6 @@ import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
-// import LineChartComponent from '@/components/dashboard/lineChartComponent'
-// import BarChartComponent from '@/components/dashboard/barChartComponent'
-// import SynchronizedLineChartComponent from '@/components/dashboard/synchronizedLineChart'
-// import TargetChartComponent from '@/components/dashboard/targetChartComponent'
-// import TopProducts from '@/components/dashboard/topProducts'
-// import MapCountryChart from '@/components/dashboard/mapCountryChart'
-// import VolumeServiceChart from '@/components/dashboard/volumeServiceChart'
-
 const LineChartComponent = dynamic(
   () => import('@/components/dashboard/lineChartComponent'),
   { ssr: false },
@@ -75,34 +67,34 @@ interface DataInterface {
 
 const dashboards: DataInterface[] = [
   {
-    icon: BarChart,
-    count: '1K',
+    icon: '/images/salesIcon.svg',
+    count: '$1K',
     title: 'Total Sales',
     description: '+8% from yesterday',
     iconBgColor: '#FA5A7D',
     bgColor: '#FFE2E5',
   },
   {
-    icon: FileText,
-    count: '1K',
-    title: 'Total Sales',
-    description: '+8% from yesterday',
+    icon: '/images/fileIcon.svg',
+    count: '300',
+    title: 'Total Order',
+    description: '+5% from yesterday',
     iconBgColor: '#FF947A',
     bgColor: '#FFF4DE',
   },
   {
-    icon: Tag,
-    count: '1K',
-    title: 'Total Sales',
-    description: '+8% from yesterday',
+    icon: '/images/tagIcon.svg',
+    count: '5',
+    title: 'Product Sold',
+    description: '+1,2% from yesterday',
     iconBgColor: '#3CD856',
     bgColor: '#DCFCE7',
   },
   {
-    icon: UserRoundPlus,
-    count: '1K',
-    title: 'Total Sales',
-    description: '+8% from yesterday',
+    icon: '/images/userIcon.svg',
+    count: '8',
+    title: 'New Customers',
+    description: '0,5% from yesterday',
     iconBgColor: '#BF83FF',
     bgColor: '#F3E8FF',
   },
@@ -110,8 +102,8 @@ const dashboards: DataInterface[] = [
 function Dashboard() {
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex gap-x-8 w-full">
-        <DashboardCard className="w-3/5">
+      <div className="2xl:flex flex-none gap-8 w-full">
+        <DashboardCard className="2xl:w-3/5 w-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="flex justify-between">
@@ -119,24 +111,33 @@ function Dashboard() {
                   {"Today's Sales"}
                 </div>
                 <div>
-                  <Button variant="outline">
-                    <Download /> Export
+                  <Button variant="outline" className="gap-x-[2.3px]">
+                    <Image
+                      src="/images/exportIcon.svg"
+                      alt="export"
+                      height={16}
+                      width={16}
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm leading-5 text-[#0F3659]">
+                      Export
+                    </span>
                   </Button>
                 </div>
               </div>
             </DashboardCardTitle>
             <DashboardCardDescription>
-              <div className="text-base font-normal leading-[30px]">
+              <div className="text-base font-normal leading-[30px] text-[#737791]">
                 Sales Summary
               </div>
             </DashboardCardDescription>
           </DashboardCardHeader>
-          <DashboardCardContent className="flex justify-between gap-x-8">
+          <DashboardCardContent className="grid lg:grid-cols-4 grid-cols-2 gap-8">
             {dashboards?.map((o, i) => {
               return (
                 <div key={i}>
                   <Card
-                    className={`border-0 max-w-[180px] w-auto`}
+                    className={`border-0 max-w-[180px] w-auto h-full`}
                     style={{ backgroundColor: o.bgColor }}
                   >
                     <CardHeader>
@@ -145,17 +146,23 @@ function Dashboard() {
                           className={`rounded-full p-[10px] h-10 w-10`}
                           style={{ backgroundColor: o.iconBgColor }}
                         >
-                          <o.icon className="bg-white h-5 w-5 rounded" />
+                          <Image
+                            src={o.icon}
+                            alt="sdsd"
+                            height={18}
+                            width={18}
+                            className="h-5 w-5 rounded"
+                          />
                         </div>
                       </CardTitle>
                       <CardDescription>
-                        <div className="text-2xl font-semibold text-[#151D48] mt-4">
+                        <div className="text-2xl leading-8 font-semibold text-[#151D48] mt-4">
                           {o.count}
                         </div>
-                        <div className="text-base font-medium text-[#425166] mt-2">
+                        <div className="text-base leading-6 font-medium text-[#425166] mt-2">
                           {o.title}
                         </div>
-                        <div className="text-xs font-medium text-[#4079ED] mt-2">
+                        <div className="text-xs leading-4 font-medium text-[#4079ED] mt-2">
                           {o.description}
                         </div>
                       </CardDescription>
@@ -166,23 +173,7 @@ function Dashboard() {
             })}
           </DashboardCardContent>
         </DashboardCard>
-        <DashboardCard className='w-2/5'>
-          <DashboardCardHeader>
-            <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
-                Visitor Insights
-              </div>
-            </DashboardCardTitle>
-          </DashboardCardHeader>
-          <DashboardCardContent >
-              <LineChartComponent />
-          </DashboardCardContent>
-        </DashboardCard>
-      </div>
-
-      {/* ------------------------------------------------------ */}
-      <div className="flex gap-x-8">
-        <DashboardCard className="w-2/6">
+        <DashboardCard className="2xl:w-2/5 w-full 2xl:mt-0 mt-8 ">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -191,11 +182,37 @@ function Dashboard() {
             </DashboardCardTitle>
           </DashboardCardHeader>
           <DashboardCardContent>
+            <LineChartComponent />
+          </DashboardCardContent>
+        </DashboardCard>
+      </div>
+
+      {/* ------------------------------------------------------ */}
+      <div className="grid 2xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  gap-8">
+        <DashboardCard className="w-full col-span-2">
+          <DashboardCardHeader>
+            <DashboardCardTitle>
+              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+                Total Revenue
+              </div>
+            </DashboardCardTitle>
+          </DashboardCardHeader>
+          <DashboardCardContent>
             <BarChartComponent />
+            <div className="flex justify-center items-center gap-x-10">
+              <div className="flex gap-x-1 items-center">
+                <div className="bg-[#0095FF] rounded-full h-[11px] w-[11px]"></div>
+                <div className="text-[#222B45] text-xs">Online Sales</div>
+              </div>
+              <div className="flex gap-x-1 items-center">
+                <div className="bg-[#00E096] rounded-full h-[11px] w-[11px]"></div>
+                <div className="text-[#222B45] text-xs">Offline Sales</div>
+              </div>
+            </div>
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-2/6">
+        <DashboardCard className="w-full col-span-1">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -230,7 +247,7 @@ function Dashboard() {
                 <div className="flex gap-x-2 items-center">
                   <div>
                     <Image
-                      src="/images/blueIndicator.svg"
+                      src="/images/greenIndicator.svg"
                       alt="last month"
                       height={9}
                       width={19}
@@ -248,7 +265,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-2/6">
+        <DashboardCard className="w-full col-span-1">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -296,11 +313,9 @@ function Dashboard() {
             </div>
           </DashboardCardContent>
         </DashboardCard>
-      </div>
 
-      {/* ------------------------------------------------------ */}
-      <div className="flex gap-x-8">
-        <DashboardCard className="w-6/12">
+        {/* --------------------------------------------- */}
+        <DashboardCard className="w-full col-span-2">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -313,7 +328,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-3/12">
+        <DashboardCard className="w-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -322,11 +337,20 @@ function Dashboard() {
             </DashboardCardTitle>
           </DashboardCardHeader>
           <DashboardCardContent>
-            <MapCountryChart />
+            {/* <MapCountryChart /> */}
+            <div className="flex justify-center items-center h-full">
+              <Image
+                src="images/countryMap.svg"
+                alt="country"
+                width={380}
+                height={230}
+                className="mt-1"
+              />
+            </div>
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-3/12">
+        <DashboardCard className="w-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -365,6 +389,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
       </div>
+
     </div>
   )
 }

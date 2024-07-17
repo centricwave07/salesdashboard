@@ -11,18 +11,59 @@ import {
 } from 'recharts'
 
 const data = [
-  { name: 'Page A', uv: 7500, pv: 7500, amt: 7500 },
-  { name: 'Page B', uv: 7500, pv: 1398, amt: 2210 },
-  { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 },
-  { name: 'Page D', uv: 2780, pv: 3908, amt: 2000 },
-  { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 },
-  { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
-  { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
+  { name: 'Jan', uv: 300, pv: 100, amt: 100 },
+  { name: 'Feb', uv: 100, pv: 200, amt: 300 },
+  { name: 'Mar', uv: 100, pv: 200, amt: 300 },
+  { name: 'Apr', uv: 400, pv: 100, amt: 100 },
+  { name: 'May', uv: 100, pv: 200, amt: 200 },
+  { name: 'Jun', uv: 200, pv: 400, amt: 400 },
+  { name: 'Jul', uv: 100, pv: 200, amt: 100 },
+  { name: 'Aug', uv: 200, pv: 300, amt: 200 },
+  { name: 'Sep', uv: 300, pv: 400, amt: 300 },
+  { name: 'Oct', uv: 300, pv: 100, amt: 300 },
+  { name: 'Nov', uv: 400, pv: 200, amt: 400 },
+  { name: 'Dec', uv: 100, pv: 300, amt: 100 },
 ]
+
+const CustomizedDot = (props: any) => {
+  const { cx, cy, stroke, payload, value } = props
+
+  return (
+    <svg
+      x={cx - 10}
+      y={cy - 10}
+      width={20}
+      height={20}
+      fill="green"
+      viewBox="0 0 1024 1024"
+    ></svg>
+  )
+}
+
+const payload = [
+  { id: '1', value: 'Loyal Customers', type: 'square', color: '#A700FF' },
+  { id: '2', value: 'New Customers', type: 'square', color: '#EF4444' },
+  { id: '3', value: 'Unique Customers', type: 'square', color: '#3CD856' },
+]
+const renderLegend = () => {
+  return (
+    <ul className="flex justify-center mt-5 gap-x-2">
+      {payload.map((entry: any, index: any) => (
+        <li key={`item-${index}`} className="flex gap-x-1">
+          <div
+            className="h-3 w-4 rounded"
+            style={{ backgroundColor: entry.color }}
+          ></div>
+          <div className="text-xs leading-3">{entry.value}</div>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 function LineChartComponent() {
   return (
-    <div style={{ width: '100%', height: '200px' }}>
+    <div style={{ width: '100%', height: '250px' }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           id="line-chart-1"
@@ -35,10 +76,25 @@ function LineChartComponent() {
           <XAxis axisLine={false} tickLine={false} dataKey="name" />
           <YAxis axisLine={false} tickLine={false} />
           <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="amt" stroke="#F64E60" />
+          <Legend content={renderLegend} />
+          <Line
+            type="monotone"
+            dataKey="pv"
+            stroke="#8884d8"
+            dot={<CustomizedDot />}
+          />
+          <Line
+            type="monotone"
+            dataKey="uv"
+            stroke="#82ca9d"
+            dot={<CustomizedDot />}
+          />
+          <Line
+            type="monotone"
+            dataKey="amt"
+            stroke="#F64E60"
+            dot={<CustomizedDot />}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

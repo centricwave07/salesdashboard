@@ -1,4 +1,4 @@
-import SidebarComponent from '../ui/sidebar'
+import SidebarComponent from './sidebar'
 
 
 function Sidebar(props: any) {

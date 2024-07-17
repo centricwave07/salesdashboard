@@ -76,7 +76,7 @@ function BarChartComponent() {
   }
 
   return (
-    <div style={{ width: '100%', height: '200px' }}>
+    <div style={{ width: '100%', height: '250px' }}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           id="bar-chart-1"
@@ -95,7 +95,6 @@ function BarChartComponent() {
           <XAxis axisLine={false} tickLine={false} dataKey="name" />
           <YAxis axisLine={false} tickLine={false} />
           <Tooltip />
-          <Legend />
           <Bar
             type="monotone"
             dataKey="offlineSale"
