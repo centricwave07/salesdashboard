@@ -21,6 +21,7 @@ interface MenuInterface {
   url: string
   pathname: string
   icon: any
+  inactiveIcon: any;
 }
 const menu: MenuInterface[] = [
   {
@@ -28,48 +29,56 @@ const menu: MenuInterface[] = [
     pathname: 'dashboard',
     url: '/dashboard',
     icon: "images/sidebar/dashboard.svg",
+    inactiveIcon: "images/sidebar/dashboardInactive.svg"
   },
   {
     title: 'Leaderboard',
     pathname: 'leaderboard',
     url: '/leaderboard',
     icon: "images/sidebar/bar.svg",
+    inactiveIcon: "images/sidebar/barInactive.svg"
   },
   {
     title: 'Order',
     pathname: 'order',
     url: '/order',
     icon: "images/sidebar/order.svg",
+    inactiveIcon: "images/sidebar/orderInactive.svg"
   },
   {
     title: 'Products',
     pathname: 'products',
     url: '/products',
     icon: "images/sidebar/products.svg",
+    inactiveIcon: "images/sidebar/productsInactive.svg"
   },
   {
     title: 'Sales Report',
     pathname: 'sales-report',
     url: '/sales-report',
     icon: "images/sidebar/salesReport.svg",
+    inactiveIcon: "images/sidebar/salesReportInactive.svg"
   },
   {
     title: 'Messages',
     pathname: 'messages',
     url: '/messages',
     icon: "images/sidebar/message.svg",
+    inactiveIcon: "images/sidebar/messageInactive.svg"
   },
   {
     title: 'Settings',
     pathname: 'settings',
     url: '/settings',
     icon: "images/sidebar/settings.svg",
+    inactiveIcon: "images/sidebar/settingsInactive.svg"
   },
   {
     title: 'Sign Out',
     pathname: 'sign-out',
     url: '/sign-out',
     icon: "images/sidebar/logout.svg",
+    inactiveIcon: "images/sidebar/logoutInactive.svg"
   },
 ]
 
@@ -114,7 +123,7 @@ function SidebarComponent(props: any) {
                           : 'text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                       }`}
                     >
-                      <Image src={o.icon} alt={o.title} height={32} width={32} className="mr-6 h-8 w-8" />
+                      <Image src={ pathname === o.pathname ? o.icon : o.inactiveIcon} alt={o.title} height={32} width={32} className="mr-6 h-8 w-8" />
                       <span className="ms-3 capitalize text-lg leading-[27px]">{o.title}</span>
                     </Link>
                   </li>
