@@ -34,7 +34,7 @@ function BarChartComponent() {
         margin={{
           top: 0,
           right: 0,
-          left: 0,
+          left: -60,
           bottom: 0,
         }}
         barSize={12}

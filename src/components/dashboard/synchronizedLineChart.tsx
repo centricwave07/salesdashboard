@@ -39,8 +39,10 @@ function SynchronizedLineChartComponent() {
         accessibilityLayer
         data={chartData}
         margin={{
-          left: 12,
-          right: 12,
+          top: 0,
+          right: 0,
+          left: -60,
+          bottom: 0,
         }}
       >
         {/* <CartesianGrid vertical={false} /> */}

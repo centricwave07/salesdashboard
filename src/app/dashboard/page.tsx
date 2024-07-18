@@ -127,12 +127,12 @@ function Dashboard() {
               </div>
             </DashboardCardDescription>
           </DashboardCardHeader>
-          <DashboardCardContent className="grid lg:grid-cols-4 grid-cols-2 gap-8">
+          <DashboardCardContent className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-4 grid-cols-2 xl:gap-8 gap-2">
             {dashboards?.map((o, i) => {
               return (
                 <div key={i}>
                   <Card
-                    className={`border-0 max-w-[180px] w-auto h-full`}
+                    className={`border-0 lg:max-w-[180px] max-w-auto w-auto h-full`}
                     style={{ backgroundColor: o.bgColor }}
                   >
                     <CardHeader>
@@ -178,7 +178,7 @@ function Dashboard() {
           </DashboardCardHeader>
           <DashboardCardContent>
             <LineChartComponent />
-            <div className="flex justify-center items-center gap-x-10 py-4">
+            <div className="sm:flex flex-none justify-center items-center gap-x-10 py-4">
               <div className="flex gap-x-1 items-center">
                 <div className="bg-[#A700FF] rounded h-[11px] w-[11px]"></div>
                 <div className="text-[#222B45] text-xs">Loyal Customers</div>
@@ -198,7 +198,7 @@ function Dashboard() {
 
       {/* ------------------------------------------------------ */}
       <div className="grid 2xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  gap-8">
-        <DashboardCard className="w-full col-span-2">
+        <DashboardCard className="w-full lg:col-span-2 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -221,7 +221,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-full col-span-1">
+        <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -241,9 +241,10 @@ function Dashboard() {
                       alt="last month"
                       height={9}
                       width={19}
+                      className='h-auto w-auto'
                     />
                   </div>
-                  <div className="2xl:text-base 2xl:leading-[30px] text-[#96A5B8]">
+                  <div className="sm:text-base text-sm sm:leading-[30px] leading-[15px] text-[#96A5B8]">
                     Last Month
                   </div>
                 </div>
@@ -252,17 +253,18 @@ function Dashboard() {
                 </div>
               </div>
               <Separator orientation="vertical" />
-              <div>
+                <div>
                 <div className="flex gap-x-2 items-center">
                   <div>
                     <Image
-                      src="/images/greenIndicator.svg"
+                      src="/images/blueIndicator.svg"
                       alt="last month"
                       height={9}
                       width={19}
+                      className='h-auto w-auto'
                     />
                   </div>
-                  <div className="text-base leading-[30px] text-[#96A5B8]">
+                  <div className="sm:text-base text-sm sm:leading-[30px] leading-[15px] text-[#96A5B8]">
                     Last Month
                   </div>
                 </div>
@@ -274,7 +276,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-full col-span-1">
+        <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -324,7 +326,7 @@ function Dashboard() {
         </DashboardCard>
 
         {/* --------------------------------------------- */}
-        <DashboardCard className="w-full col-span-2">
+        <DashboardCard className="w-full lg:col-span-2 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -337,7 +339,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-full">
+        <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
@@ -346,7 +348,7 @@ function Dashboard() {
             </DashboardCardTitle>
           </DashboardCardHeader>
           <DashboardCardContent>
-            {/* <MapCountryChart /> */}
+          {/* <MapCountryChart />  */}
             <div className="flex justify-center items-center h-full">
               <Image
                 src="images/countryMap.svg"
@@ -359,7 +361,7 @@ function Dashboard() {
           </DashboardCardContent>
         </DashboardCard>
 
-        <DashboardCard className="w-full">
+        <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="text-xl leading-8 font-semibold text-[#05004E]">
