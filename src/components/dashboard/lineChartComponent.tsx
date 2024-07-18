@@ -1,103 +1,91 @@
-import React from 'react'
+"use client"
+
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
-
-const data = [
-  { name: 'Jan', uv: 300, pv: 100, amt: 100 },
-  { name: 'Feb', uv: 100, pv: 200, amt: 300 },
-  { name: 'Mar', uv: 100, pv: 200, amt: 300 },
-  { name: 'Apr', uv: 400, pv: 100, amt: 100 },
-  { name: 'May', uv: 100, pv: 200, amt: 200 },
-  { name: 'Jun', uv: 200, pv: 400, amt: 400 },
-  { name: 'Jul', uv: 100, pv: 200, amt: 100 },
-  { name: 'Aug', uv: 200, pv: 300, amt: 200 },
-  { name: 'Sep', uv: 300, pv: 400, amt: 300 },
-  { name: 'Oct', uv: 300, pv: 100, amt: 300 },
-  { name: 'Nov', uv: 400, pv: 200, amt: 400 },
-  { name: 'Dec', uv: 100, pv: 300, amt: 100 },
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+const chartData = [
+  { month: "Jan", desktop: 186,  mobile: 100, others: 200 },
+  { month: "Feb", desktop: 305,  mobile: 300, others: 100 },
+  { month: "Mar", desktop: 237,  mobile: 200, others: 250 },
+  { month: "Apr", desktop: 73,  mobile: 400, others: 300 },
+  { month: "May", desktop: 209,  mobile: 300, others: 150 },
+  { month: "Jun", desktop: 214,  mobile: 250, others: 280 },
+  { month: "Jul", desktop: 218,  mobile: 130, others: 320 },
+  { month: "Jun", desktop: 220,  mobile: 350, others: 220 },
+  { month: "Jul", desktop: 225,  mobile: 100, others: 330 },
+  { month: "Aug", desktop: 230,  mobile: 180, others: 400 },
+  { month: "Sep", desktop: 232,  mobile: 280, others: 290 },
+  { month: "Oct", desktop: 210,  mobile: 190, others: 320 },
+  { month: "Nov", desktop: 239,  mobile: 230, others: 300 },
+  { month: "Dec", desktop: 240,  mobile: 360, others: 190 },
 ]
 
-const CustomizedDot = (props: any) => {
-  const { cx, cy, stroke, payload, value } = props
-
-  return (
-    <svg
-      x={cx - 10}
-      y={cy - 10}
-      width={20}
-      height={20}
-      fill="green"
-      viewBox="0 0 1024 1024"
-    ></svg>
-  )
-}
-
-const payload = [
-  { id: '1', value: 'Loyal Customers', type: 'square', color: '#A700FF' },
-  { id: '2', value: 'New Customers', type: 'square', color: '#EF4444' },
-  { id: '3', value: 'Unique Customers', type: 'square', color: '#3CD856' },
-]
-const renderLegend = () => {
-  return (
-    <ul className="flex justify-center mt-5 gap-x-2">
-      {payload.map((entry: any, index: any) => (
-        <li key={`item-${index}`} className="flex gap-x-1">
-          <div
-            className="h-3 w-4 rounded"
-            style={{ backgroundColor: entry.color }}
-          ></div>
-          <div className="text-xs leading-3">{entry.value}</div>
-        </li>
-      ))}
-    </ul>
-  )
-}
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "#A700FF",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "#EF4444",
+  },
+  others: {
+    label: "Others",
+    color: "#3CD856",
+  },
+} satisfies ChartConfig
 
 function LineChartComponent() {
   return (
-    <div style={{ width: '100%', height: '250px' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          id="line-chart-1"
-          width={600}
-          height={200}
-          data={data}
-          margin={{ top: 5, right: 0, left: 0, bottom: 5 }}
-        >
-          <CartesianGrid vertical={false} />
-          <XAxis axisLine={false} tickLine={false} dataKey="name" />
-          <YAxis axisLine={false} tickLine={false} />
-          <Tooltip />
-          <Legend content={renderLegend} />
-          <Line
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            dot={<CustomizedDot />}
-          />
-          <Line
-            type="monotone"
-            dataKey="uv"
-            stroke="#82ca9d"
-            dot={<CustomizedDot />}
-          />
-          <Line
-            type="monotone"
-            dataKey="amt"
-            stroke="#F64E60"
-            dot={<CustomizedDot />}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <ChartContainer config={chartConfig} style={{ width: '100%', height: '200px' }}>
+    <LineChart
+      accessibilityLayer
+      data={chartData}
+      margin={{
+        left: 0,
+        right: 0,
+      }}
+    >
+      <CartesianGrid vertical={false} />
+      <XAxis
+        dataKey="month"
+        tickLine={false}
+        axisLine={false}
+        tickFormatter={(value) => value.slice(0, 3)}
+      />
+      <YAxis
+        tickLine={false}
+        axisLine={false}
+        tickMargin={8}
+      />
+      <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+      <Line
+        dataKey="desktop"
+        type="monotone"
+        stroke="var(--color-desktop)"
+        strokeWidth={2}
+        dot={false}
+      />
+      <Line
+        dataKey="mobile"
+        type="monotone"
+        stroke="var(--color-mobile)"
+        strokeWidth={2}
+        dot={false}
+      />
+      <Line
+        dataKey="others"
+        type="monotone"
+        stroke="var(--color-others)"
+        strokeWidth={2}
+        dot={false}
+      />
+    </LineChart>
+  </ChartContainer>
   )
 }
 

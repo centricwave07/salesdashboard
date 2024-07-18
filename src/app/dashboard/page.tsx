@@ -15,13 +15,8 @@ import {
   DashboardCardTitle,
 } from '@/components/dashboard/dashboardCard'
 import {
-  BarChart,
   BriefcaseBusiness,
-  Download,
-  FileText,
-  Tag,
   Ticket,
-  UserRoundPlus,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
@@ -183,6 +178,20 @@ function Dashboard() {
           </DashboardCardHeader>
           <DashboardCardContent>
             <LineChartComponent />
+            <div className="flex justify-center items-center gap-x-10 py-4">
+              <div className="flex gap-x-1 items-center">
+                <div className="bg-[#A700FF] rounded h-[11px] w-[11px]"></div>
+                <div className="text-[#222B45] text-xs">Loyal Customers</div>
+              </div>
+              <div className="flex gap-x-1 items-center">
+                <div className="bg-[#EF4444] rounded h-[11px] w-[11px]"></div>
+                <div className="text-[#222B45] text-xs">New Customers</div>
+              </div>
+              <div className="flex gap-x-1 items-center">
+                <div className="bg-[#3CD856] rounded h-[11px] w-[11px]"></div>
+                <div className="text-[#222B45] text-xs">Unique Customers</div>
+              </div>
+            </div>
           </DashboardCardContent>
         </DashboardCard>
       </div>
