@@ -27,11 +27,11 @@ function Header() {
               <div className='flex justify-center items-center cursor-pointer' onClick={() => setIsSidebar(!isSidebar)}>
                 <Menu />
               </div>
-              <div className="flex items-center justify-between gap-x-2">
+              <div className="flex items-center justify-between gap-x-2 h-full">
                 <div>
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <div className="flex justify-center it">
+                      <div className="flex justify-center items-center">
                         <Image
                           src="/images/englishLogo.svg"
                           alt="en"
@@ -49,82 +49,78 @@ function Header() {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-                <div className="flex gap-x-2 items-center justify-center">
-                  <div className="bg-[#FFFAF1] rounded-[8px] h-8 w-8 relative">
+
+                <div className="flex items-center">
+                  <div className="bg-[#FFFAF1] rounded-[8px] h-10 w-10 relative">
                     <div>
                       <div className="absolute right-0 h-1 w-1 rounded-full bg-[#EB5757] m-1"></div>
                     </div>
                     <div className="flex justify-center items-center h-full">
-                      <Bell className="text-[#FFA412] h-4 w-4" />
+                      <Bell className="text-[#FFA412] h-6 w-6" />
                     </div>
                   </div>
-
-
-                  <div className="flex flex-col justify-center">
-                    <div>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger>
-                          <Image
-                            src="/images/user.svg"
-                            alt="profile"
-                            height={30}
-                            width={30}
-                            className="rounded h-[40px] w-[40px]"
-                          />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                          <DropdownMenuLabel>Profile</DropdownMenuLabel>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem>Setting</DropdownMenuItem>
-                          <DropdownMenuItem>Status</DropdownMenuItem>
-                          <DropdownMenuItem>Update Password</DropdownMenuItem>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem>Logout</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </div>
-
-                  </div>
-
                 </div>
+
+                <div className="flex h-full justify-center items-center">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <Image
+                        src="/images/user.svg"
+                        alt="profile"
+                        height={40}
+                        width={40}
+                        className="rounded h-[47px] w-[47px]"
+                      />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>Profile</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Setting</DropdownMenuItem>
+                      <DropdownMenuItem>Status</DropdownMenuItem>
+                      <DropdownMenuItem>Update Password</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Logout</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+
               </div>
             </div>
           </div>
         </header>
         {/* Menu list */}
         {isSidebar &&
-           <div className="fixed top-0 left-0 h-screen w-screen bg-white z-50 p-4">
-           <div className="container mx-auto">
-           <div className="flex justify-between items-center w-full py-[20px]">
-              <Link href="/" className="flex gap-x-[14px] ">
-                <div className="bg-[#5D5FEF] flex justify-center items-center p-[12px] rounded-[8px]">
-                  <Image
-                    src="/images/logo.svg"
-                    alt="logo"
-                    height={24}
-                    width={24}
-                    className="h-6 w-6"
-                  />
-                </div>
-                <span className="self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                  Dabang
-                </span>
-              </Link>
-              <div className='cursor-pointer' onClick={() => setIsSidebar(false)}><X /></div>
-            </div>
-            <ul className="space-y-2 font-medium">
+          <div className="fixed top-0 left-0 h-screen w-screen bg-white z-50 p-4">
+            <div className="container mx-auto">
+              <div className="flex justify-between items-center w-full py-[20px]">
+                <Link href="/" className="flex gap-x-[14px] ">
+                  <div className="bg-[#5D5FEF] flex justify-center items-center p-[12px] rounded-[8px]">
+                    <Image
+                      src="/images/logo.svg"
+                      alt="logo"
+                      height={24}
+                      width={24}
+                      className="h-6 w-6"
+                    />
+                  </div>
+                  <span className="self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                    Dabang
+                  </span>
+                </Link>
+                <div className='cursor-pointer' onClick={() => setIsSidebar(false)}><X /></div>
+              </div>
+              <ul className="space-y-2 font-medium">
                 {menu?.map((o) => {
                   return (
                     <li key={o.title}>
                       <Link
                         href={o.url}
                         className={`flex items-center 2xl:px-6 lg:px-3 px-1 2xl:py-4 lg:py-2 py-1
-                          group ${
-                            pathname === o.pathname
-                              ? 'text-white rounded-lg bg-[#5D5FEF] dark:hover:bg-gray-700'
-                              : 'text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                          group ${pathname === o.pathname
+                            ? 'text-white rounded-lg bg-[#5D5FEF] dark:hover:bg-gray-700'
+                            : 'text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                           }`}
-                          onClick={() => setIsSidebar(false)}
+                        onClick={() => setIsSidebar(false)}
                       >
                         <Image
                           src={
@@ -143,8 +139,8 @@ function Header() {
                   )
                 })}
               </ul>
-           </div>
-         </div>
+            </div>
+          </div>
         }
       </div>
       {/*---------Desktop header---------------  */}
