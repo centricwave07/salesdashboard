@@ -32,7 +32,7 @@ function SidebarComponent(props: any) {
                   />
                 </div>
                 <span className="self-center text-3xl leading-[45px] font-semibold sm:text-2xl whitespace-nowrap">
-                  Dabang
+                  DashFlow
                 </span>
               </Link>
             </div>
@@ -82,7 +82,7 @@ function SidebarComponent(props: any) {
                   />
                 </div>
                 <div className="mt-2 text-xl leading-[32px] font-semibold">
-                  Dabang Pro
+                  DashFlow Pro
                 </div>
                 <div className="mt2 text-xs leading-4 font-medium">
                   Get access to all features on tetumbas

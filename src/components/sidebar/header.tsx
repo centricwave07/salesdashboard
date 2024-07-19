@@ -107,7 +107,7 @@ function Header() {
                     />
                   </div>
                   <span className="self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap">
-                    Dabang
+                    DashFlow
                   </span>
                 </Link>
                 <div className='cursor-pointer' onClick={() => setIsSidebar(false)}><X /></div>
@@ -149,8 +149,8 @@ function Header() {
       <div className="md:block hidden">
         <nav className="xl:ml-[345px] ml-[200px] fixed top-0 z-50 xl:w-[calc(100%-345px)] w-[calc(100%-200px)] bg-card border-border">
           <div className="grid 2xl:grid-cols-3 grid-cols-2 2xl:py-[30px] py-[15px] 2xl:px-10 px-4 2xl:gap-x-2 gap-x-1 w-full">
-            <div className="text-4xl leading-[50.4px] font-semibold flex items-center text-text">
-              Dashboard
+            <div className="text-4xl leading-[50.4px] font-semibold flex items-center text-text capitalize">
+              {pathname}
             </div>
             <div className="2xl:block hidden">
               <div className="flex items-center">
