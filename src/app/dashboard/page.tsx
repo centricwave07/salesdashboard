@@ -102,7 +102,7 @@ function Dashboard() {
           <DashboardCardHeader>
             <DashboardCardTitle>
               <div className="flex justify-between">
-                <div className="text-xl leading-8 font-semibold text-[#05004E]">
+                <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                   {"Today's Sales"}
                 </div>
                 <div>
@@ -171,7 +171,7 @@ function Dashboard() {
         <DashboardCard className="2xl:w-2/5 w-full 2xl:mt-0 mt-8 ">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Visitor Insights
               </div>
             </DashboardCardTitle>
@@ -201,7 +201,7 @@ function Dashboard() {
         <DashboardCard className="w-full lg:col-span-2 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Total Revenue
               </div>
             </DashboardCardTitle>
@@ -224,7 +224,7 @@ function Dashboard() {
         <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Customer Satisfaction
               </div>
             </DashboardCardTitle>
@@ -279,7 +279,7 @@ function Dashboard() {
         <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Target vs Reality
               </div>
             </DashboardCardTitle>
@@ -329,7 +329,7 @@ function Dashboard() {
         <DashboardCard className="w-full lg:col-span-2 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Top Products
               </div>
             </DashboardCardTitle>
@@ -342,7 +342,7 @@ function Dashboard() {
         <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Sales Mapping by Country
               </div>
             </DashboardCardTitle>
@@ -364,7 +364,7 @@ function Dashboard() {
         <DashboardCard className="w-full lg:col-span-1 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
-              <div className="text-xl leading-8 font-semibold text-[#05004E]">
+              <div className="text-xl leading-8 font-semibold text-[#05004E] dark:text-white">
                 Volume vs Service Level
               </div>
             </DashboardCardTitle>

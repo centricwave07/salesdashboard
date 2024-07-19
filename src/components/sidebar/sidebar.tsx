@@ -11,17 +11,18 @@ function SidebarComponent(props: any) {
   const pathname = usePathname().split('/')[1]
   return (
     <div>
+      {/* Desktop View */}
       <div className="hidden md:block">
-        <div className="flex">
+        <div className="flex bg-card">
           {/* Sidebar Section */}
           <aside
             id="logo-sidebar"
-            className="fixed top-0 left-0 bottom-0 z-40 xl:w-[345px] w-[200px] h-full overflow-y-auto flex flex-col justify-between bg-white"
+            className="fixed top-0 left-0 bottom-0 z-40 xl:w-[345px] w-[200px] h-full overflow-y-auto flex flex-col justify-between bg-card"
             aria-label="Sidebar"
           >
             <div className="flex justify-center items-center w-full py-[40px]">
               <Link href="/" className="flex gap-x-[14px] ">
-                <div className="bg-[#5D5FEF] flex justify-center items-center p-[15.75px] rounded-[8px]">
+                <div className="bg-theme flex justify-center items-center p-[15.75px] rounded-[8px]">
                   <Image
                     src="/images/logo.svg"
                     alt="logo"
@@ -30,12 +31,12 @@ function SidebarComponent(props: any) {
                     className="h-6"
                   />
                 </div>
-                <span className="self-center text-3xl leading-[45px] font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                <span className="self-center text-3xl leading-[45px] font-semibold sm:text-2xl whitespace-nowrap">
                   Dabang
                 </span>
               </Link>
             </div>
-            <div className="h-full 2xl:px-[46px] px-[23px] lg:pb-4 pb-2 bg-white dark:bg-gray-800 flex flex-col justify-between">
+            <div className="h-full 2xl:px-[46px] px-[23px] lg:pb-4 pb-2 bg-card flex flex-col justify-between">
               <ul className="space-y-2 font-medium">
                 {menu?.map((o) => {
                   return (
@@ -43,10 +44,9 @@ function SidebarComponent(props: any) {
                       <Link
                         href={o.url}
                         className={`flex items-center 2xl:px-6 lg:px-3 px-1 2xl:py-4 lg:py-2 py-1
-                          group ${
-                            pathname === o.pathname
-                              ? 'text-white rounded-lg bg-[#5D5FEF] dark:hover:bg-gray-700'
-                              : 'text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                          group ${pathname === o.pathname
+                            ? 'dark:text-text text-white rounded-lg bg-theme dark:hover:bg-gray-700'
+                            : 'dark:text-text rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700'
                           }`}
                       >
                         <Image
@@ -67,7 +67,7 @@ function SidebarComponent(props: any) {
                 })}
               </ul>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center bg-card">
               <div
                 className="bg-cover bg-center  2xl:w-[238px] w-[180px] h-[261px] my-10 flex flex-col justify-center items-center px-[30px] py-[46px] text-center rounded-[8px] text-white"
                 style={{ backgroundImage: "url('images/proBackground.svg')" }}
@@ -88,7 +88,7 @@ function SidebarComponent(props: any) {
                   Get access to all features on tetumbas
                 </div>
                 <Button
-                  className="text-[#5D5FEF] mt-8 text-base font-semibold leading-6"
+                  className="text-text mt-8 text-base font-semibold leading-6"
                   variant={'secondary'}
                 >
                   Get Pro
@@ -102,12 +102,14 @@ function SidebarComponent(props: any) {
         </div>
 
         {/* Main Section */}
-        <div className="p-8 xl:ml-[345px] ml-[200px] 2xl:mt-[120px] mt-[150px] bg-[#F8F9FA] min-h-[calc(100vh-130px)] h-auto w-auto">
+        <div className="p-8 xl:ml-[345px] ml-[200px] 2xl:mt-[120px] mt-[150px] bg-background min-h-[calc(100vh-130px)] h-auto w-auto">
           {props.pages}
         </div>
       </div>
+
+      {/* Mobile View */}
       <Header />
-      <div className='md:hidden block p-4 bg-[#F8F9FA] pt-[120px] min-h-screen h-screen'>
+      <div className='md:hidden block p-4 bg-background pt-[120px] min-h-screen h-screen'>
         {props.pages}
       </div>
     </div>

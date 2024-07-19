@@ -13,15 +13,18 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { menu } from '@/data/menu'
+import  { useTheme } from '@/lib/themeContext'
 
 function Header() {
   const pathname = usePathname().split('/')[1]
   const [isSidebar, setIsSidebar] = useState(false)
 
+  const { theme, toggleTheme } = useTheme();
+  
   return (
     <div>
       <div className="md:hidden block">
-        <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 p-4">
+        <header className="fixed top-0 left-0 w-full bg-card shadow-md z-50 p-4">
           <div className="mx-1">
             <div className='flex justify-between items-center'>
               <div className='flex justify-center items-center cursor-pointer' onClick={() => setIsSidebar(!isSidebar)}>
@@ -90,11 +93,11 @@ function Header() {
         </header>
         {/* Menu list */}
         {isSidebar &&
-          <div className="fixed top-0 left-0 h-screen w-screen bg-white z-50 p-4">
+          <div className="fixed top-0 left-0 h-screen w-screen bg-card z-50 p-4">
             <div className="container mx-auto">
               <div className="flex justify-between items-center w-full py-[20px]">
                 <Link href="/" className="flex gap-x-[14px] ">
-                  <div className="bg-[#5D5FEF] flex justify-center items-center p-[12px] rounded-[8px]">
+                  <div className="bg-theme flex justify-center items-center p-[12px] rounded-[8px]">
                     <Image
                       src="/images/logo.svg"
                       alt="logo"
@@ -103,7 +106,7 @@ function Header() {
                       className="h-6 w-6"
                     />
                   </div>
-                  <span className="self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                  <span className="self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap">
                     Dabang
                   </span>
                 </Link>
@@ -117,10 +120,9 @@ function Header() {
                         href={o.url}
                         className={`flex items-center 2xl:px-6 lg:px-3 px-1 2xl:py-4 lg:py-2 py-1
                           group ${pathname === o.pathname
-                            ? 'text-white rounded-lg bg-[#5D5FEF] dark:hover:bg-gray-700'
-                            : 'text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                            ? 'dark:text-text text-white rounded-lg bg-theme dark:hover:bg-gray-700'
+                            : 'dark:text-text rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700'
                           }`}
-                        onClick={() => setIsSidebar(false)}
                       >
                         <Image
                           src={
@@ -145,9 +147,9 @@ function Header() {
       </div>
       {/*---------Desktop header---------------  */}
       <div className="md:block hidden">
-        <nav className="xl:ml-[345px] ml-[200px] fixed top-0 z-50 xl:w-[calc(100%-345px)] w-[calc(100%-200px)] bg-white dark:bg-gray-800 dark:border-gray-700">
+        <nav className="xl:ml-[345px] ml-[200px] fixed top-0 z-50 xl:w-[calc(100%-345px)] w-[calc(100%-200px)] bg-card border-border">
           <div className="grid 2xl:grid-cols-3 grid-cols-2 2xl:py-[30px] py-[15px] 2xl:px-10 px-4 2xl:gap-x-2 gap-x-1 w-full">
-            <div className="text-4xl leading-[50.4px] font-semibold flex items-center text-[#151D48]">
+            <div className="text-4xl leading-[50.4px] font-semibold flex items-center text-text">
               Dashboard
             </div>
             <div className="2xl:block hidden">
@@ -168,10 +170,10 @@ function Header() {
                           width={24}
                           className="h-6 w-h-6"
                         />
-                        <span className="text-lg leading-[27px] text-[#374557]">
+                        <span className="text-lg leading-[27px] text-text">
                           Eng(US)
                         </span>
-                        <ChevronDown className="text-[#A098AE]" />
+                        <ChevronDown className="text-text" />
                       </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
@@ -214,6 +216,7 @@ function Header() {
                             <DropdownMenuItem>Setting</DropdownMenuItem>
                             <DropdownMenuItem>Status</DropdownMenuItem>
                             <DropdownMenuItem>Update Password</DropdownMenuItem>
+                            <DropdownMenuItem onClick={toggleTheme} className='capitalize'>{theme === 'dark' ? 'Dark' : 'Light'}</DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem>Logout</DropdownMenuItem>
                           </DropdownMenuContent>
