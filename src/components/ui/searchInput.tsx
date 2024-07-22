@@ -11,7 +11,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative w-full">
         <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
-          <Search className='text-theme' />
+          <Search className='text-primary' />
         </span>
         <input
           type={type}

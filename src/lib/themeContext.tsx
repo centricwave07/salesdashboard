@@ -1,20 +1,55 @@
-// ThemeContext.tsx
-import React, { createContext, useState, useContext } from 'react';
+"use client";
+import setGlobalColorTheme from "@/lib/theme-colors";
+import { useTheme } from "next-themes";
+import { ThemeProviderProps } from "next-themes/dist/types";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-type Theme = 'light' | 'dark';
-type ThemeContextType = {
-  theme: Theme;
-  toggleTheme: () => void;
-};
+const ThemeContext = createContext<ThemeColorStateParams>(
+  {} as ThemeColorStateParams,
+);
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export default function ThemeDataProvider({
+  children,
+}: ThemeProviderProps) {
+  const getSavedThemeColor = () => {
+    try {
+      return (localStorage.getItem("themeColor") as ThemeColors) || "Default";
+    } catch (error) {
+      "Default" as ThemeColors;
+    }
+  };
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+  const [themeColor, setThemeColor] = useState<ThemeColors>(
+    getSavedThemeColor() as ThemeColors,
+  );
+  const [isMounted, setIsMounted] = useState(false);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    localStorage.setItem("themeColor", themeColor);
+    setGlobalColorTheme(theme as "light" | "dark", themeColor);
+
+    if (!isMounted) {
+      setIsMounted(true);
+    }
+  }, [themeColor, theme]);
+
+  if (!isMounted) {
+    return null;
   }
-  return context;
-};
 
-export default ThemeContext;
+  return (
+    <ThemeContext.Provider value={{ themeColor, setThemeColor }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function useThemeContext() {
+  return useContext(ThemeContext);
+}

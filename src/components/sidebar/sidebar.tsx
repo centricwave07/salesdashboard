@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Button } from '../ui/button'
 import Header from './header'
 import { menu } from '@/data/menu'
+import { DiamondPercent } from 'lucide-react'
 
 function SidebarComponent(props: any) {
   const pathname = usePathname().split('/')[1]
@@ -22,14 +23,8 @@ function SidebarComponent(props: any) {
           >
             <div className="flex justify-center items-center w-full py-[40px]">
               <Link href="/" className="flex gap-x-[14px] ">
-                <div className="bg-theme flex justify-center items-center p-[15.75px] rounded-[8px]">
-                  <Image
-                    src="/images/logo.svg"
-                    alt="logo"
-                    height={24}
-                    width={24}
-                    className="h-6"
-                  />
+                <div className="bg-primary flex justify-center items-center p-[15.75px] rounded-[8px]">
+                  <DiamondPercent className="text-activeText h-6 w-6" />
                 </div>
                 <span className="self-center text-3xl leading-[45px] font-semibold sm:text-2xl whitespace-nowrap">
                   DashFlow
@@ -45,20 +40,17 @@ function SidebarComponent(props: any) {
                         href={o.url}
                         className={`flex items-center 2xl:px-6 lg:px-3 px-1 2xl:py-4 lg:py-2 py-1
                           group ${pathname === o.pathname
-                            ? 'dark:text-text text-white rounded-lg bg-theme dark:hover:bg-gray-700'
-                            : 'dark:text-text rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700'
+                            ? 'text-activeText rounded-lg bg-primary dark:hover:bg-gray-700'
+                            : 'text-text rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700'
                           }`}
                       >
-                        <Image
-                          src={
-                            pathname === o.pathname ? o.icon : o.inactiveIcon
-                          }
-                          alt={o.title}
-                          height={32}
-                          width={32}
-                          className="2xl:mr-6 lg:mr:3 mr-1 2xl:h-8 lg:h-6 h-4 2xl:w-8 lg:w-6 w-4"
+                        <o.icon
+                          className={`${pathname === o.pathname
+                              ? 'text-activeText'
+                              : 'text-text'
+                            }, mr-2 h-4 w-4`}
                         />
-                        <span className="2xl:ms-3 lg:ms-2 ms-1 capitalize xl:text-lg lg:text-base text-sm text- leading-[27px]">
+                        <span className="2xl:ms-3 lg:ms-2 ms-1 capitalize xl:text-lg lg:text-base text-sm leading-[27px]">
                           {o.title}
                         </span>
                       </Link>
@@ -69,22 +61,16 @@ function SidebarComponent(props: any) {
             </div>
             <div className="flex justify-center items-center bg-card">
               <div
-                className="bg-cover bg-center  2xl:w-[238px] w-[180px] h-[261px] my-10 flex flex-col justify-center items-center px-[30px] py-[46px] text-center rounded-[8px] text-white"
-                style={{ backgroundImage: "url('images/proBackground.svg')" }}
+                className="bg-primary bg-cover bg-center 2xl:w-[238px] w-[180px] h-[261px] my-10 flex flex-col justify-center items-center px-[30px] py-[46px] text-center rounded-[20px] text-white"
+                // style={{ backgroundImage: "url('images/proBackground.svg')" }}
               >
-                <div className="bg-white flex justify-center items-center p-[15.75px] rounded-[8px]">
-                  <Image
-                    src="/images/logo-purple.svg"
-                    alt="logo"
-                    height={24}
-                    width={24}
-                    className="h-6"
-                  />
+                <div className="bg-primary flex justify-center items-center p-[15.75px] rounded-[8px] shadow-2xl border border-activeText">
+                  <DiamondPercent className="text-activeText h-6 w-6" />
                 </div>
-                <div className="mt-2 text-xl leading-[32px] font-semibold">
+                <div className="mt-2 text-xl leading-[32px] font-semibold text-activeText">
                   DashFlow Pro
                 </div>
-                <div className="mt2 text-xs leading-4 font-medium">
+                <div className="mt2 text-xs leading-4 font-medium  text-activeText">
                   Get access to all features on tetumbas
                 </div>
                 <Button
@@ -109,7 +95,7 @@ function SidebarComponent(props: any) {
 
       {/* Mobile View */}
       <Header />
-      <div className='md:hidden block p-4 bg-background pt-[120px] min-h-screen h-screen'>
+      <div className="md:hidden block p-4 bg-background pt-[120px] min-h-screen h-screen">
         {props.pages}
       </div>
     </div>

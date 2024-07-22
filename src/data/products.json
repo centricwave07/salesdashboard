@@ -1,0 +1,32 @@
+[
+  {
+    "image": "/images/products/jalebi.jpeg",
+    "name": "jalebi",
+    "status": "active",
+    "price": "350"
+  },
+  {
+    "image": "/images/products/ghugra.jpg",
+    "name": "ghugra",
+    "status": "active",
+    "price": "250"
+  },
+  {
+    "image": "/images/products/sandwhich.jpeg",
+    "name": "sandwhich",
+    "status": "active",
+    "price": "500"
+  },
+  {
+    "image": "/images/products/gujrati-thali.jpeg",
+    "name": "gujrati thali",
+    "status": "active",
+    "price": "1200"
+  },
+  {
+    "image": "/images/products/rj-thali.jpeg",
+    "name": "rajsthani thali",
+    "status": "active",
+    "price": "1500"
+  }
+]

@@ -16,6 +16,7 @@ import {
 } from '@/components/dashboard/dashboardCard'
 import {
   BriefcaseBusiness,
+  Download,
   Ticket,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
@@ -107,14 +108,8 @@ function Dashboard() {
                 </div>
                 <div>
                   <Button variant="outline" className="gap-x-[2.3px]">
-                    <Image
-                      src="/images/exportIcon.svg"
-                      alt="export"
-                      height={16}
-                      width={16}
-                      className="h-4 w-4"
-                    />
-                    <span className="text-sm leading-5 text-[#0F3659]">
+                    <Download className='h-4 w-4' /> 
+                    <span className="text-sm leading-5 text-[#0F3659] dark:text-gray-400">
                       Export
                     </span>
                   </Button>
@@ -181,15 +176,15 @@ function Dashboard() {
             <div className="sm:flex flex-none justify-center items-center gap-x-10 py-4">
               <div className="flex gap-x-1 items-center">
                 <div className="bg-[#A700FF] rounded h-[11px] w-[11px]"></div>
-                <div className="text-[#222B45] text-xs">Loyal Customers</div>
+                <div className="text-[#222B45] dark:text-gray-500 text-xs">Loyal Customers</div>
               </div>
               <div className="flex gap-x-1 items-center">
                 <div className="bg-[#EF4444] rounded h-[11px] w-[11px]"></div>
-                <div className="text-[#222B45] text-xs">New Customers</div>
+                <div className="text-[#222B45] dark:text-gray-500 text-xs">New Customers</div>
               </div>
               <div className="flex gap-x-1 items-center">
                 <div className="bg-[#3CD856] rounded h-[11px] w-[11px]"></div>
-                <div className="text-[#222B45] text-xs">Unique Customers</div>
+                <div className="text-[#222B45] dark:text-gray-500 text-xs">Unique Customers</div>
               </div>
             </div>
           </DashboardCardContent>
@@ -197,7 +192,7 @@ function Dashboard() {
       </div>
 
       {/* ------------------------------------------------------ */}
-      <div className="grid 2xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  gap-8">
+      <div className="grid 2xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 gap-8">
         <DashboardCard className="w-full lg:col-span-2 col-span-full">
           <DashboardCardHeader>
             <DashboardCardTitle>
@@ -211,11 +206,11 @@ function Dashboard() {
             <div className="flex justify-center items-center gap-x-10">
               <div className="flex gap-x-1 items-center">
                 <div className="bg-[#0095FF] rounded-full h-[11px] w-[11px]"></div>
-                <div className="text-[#222B45] text-xs">Online Sales</div>
+                <div className="text-[#222B45] dark:text-gray-500 text-xs">Online Sales</div>
               </div>
               <div className="flex gap-x-1 items-center">
                 <div className="bg-[#00E096] rounded-full h-[11px] w-[11px]"></div>
-                <div className="text-[#222B45] text-xs">Offline Sales</div>
+                <div className="text-[#222B45] dark:text-gray-500 text-xs">Offline Sales</div>
               </div>
             </div>
           </DashboardCardContent>
@@ -241,7 +236,7 @@ function Dashboard() {
                       alt="last month"
                       height={9}
                       width={19}
-                      className='h-auto w-auto'
+                      className='h-[9px] w-[19px]'
                     />
                   </div>
                   <div className="sm:text-base text-sm sm:leading-[30px] leading-[15px] text-[#96A5B8]">
@@ -257,11 +252,11 @@ function Dashboard() {
                 <div className="flex gap-x-2 items-center">
                   <div>
                     <Image
-                      src="/images/blueIndicator.svg"
+                      src="/images/greenIndicator.svg"
                       alt="last month"
                       height={9}
                       width={19}
-                      className='h-auto w-auto'
+                      className='h-[9px] w-[19px]'
                     />
                   </div>
                   <div className="sm:text-base text-sm sm:leading-[30px] leading-[15px] text-[#96A5B8]">

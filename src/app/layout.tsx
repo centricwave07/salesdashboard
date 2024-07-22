@@ -4,8 +4,9 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import Sidebar from '@/components/sidebar'
 import { cn } from '@/lib/utils'
-import { useEffect, useState } from 'react'
-import ThemeContext from '@/lib/themeContext'
+import { useEffect } from 'react'
+import { ThemeProvider } from '@/lib/theme-provider'
+import ThemeDataProvider from '@/lib/themeContext'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -20,12 +21,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const [theme, setTheme] = useState<Theme>('light')
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
-    localStorage.setItem('mode', theme === 'light' ? 'dark' : 'light')
-  }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,22 +32,25 @@ export default function RootLayout({
     }
   }, [])
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('mode');
-      if (storedTheme) {
-        setTheme(storedTheme as Theme);
-      }
-    }
-  }, [theme]);
-
   return (
     <html lang="en">
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <body className={cn(theme, poppins.variable)}>
+    <body
+    className={cn(
+      `h-full bg-background font-sans antialiased`,
+      poppins.variable,
+    )}
+    >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <ThemeDataProvider >
           <Sidebar pages={children} />
-        </body>
-      </ThemeContext.Provider>
-    </html>
+        </ThemeDataProvider>
+      </ThemeProvider>
+    </body>
+  </html>
   )
 }

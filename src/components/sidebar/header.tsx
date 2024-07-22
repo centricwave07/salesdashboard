@@ -8,26 +8,27 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import { SearchInput } from '../ui/searchInput'
-import { Bell, ChevronDown, Menu, X } from 'lucide-react'
+import { Bell, ChevronDown, DiamondPercent, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { menu } from '@/data/menu'
-import  { useTheme } from '@/lib/themeContext'
+import ThemeUpdate from './themeUpdate'
 
 function Header() {
   const pathname = usePathname().split('/')[1]
   const [isSidebar, setIsSidebar] = useState(false)
 
-  const { theme, toggleTheme } = useTheme();
-  
   return (
     <div>
       <div className="md:hidden block">
         <header className="fixed top-0 left-0 w-full bg-card shadow-md z-50 p-4">
           <div className="mx-1">
-            <div className='flex justify-between items-center'>
-              <div className='flex justify-center items-center cursor-pointer' onClick={() => setIsSidebar(!isSidebar)}>
+            <div className="flex justify-between items-center">
+              <div
+                className="flex justify-center items-center cursor-pointer"
+                onClick={() => setIsSidebar(!isSidebar)}
+              >
                 <Menu />
               </div>
               <div className="flex items-center justify-between gap-x-2 h-full">
@@ -81,36 +82,37 @@ function Header() {
                       <DropdownMenuItem>Setting</DropdownMenuItem>
                       <DropdownMenuItem>Status</DropdownMenuItem>
                       <DropdownMenuItem>Update Password</DropdownMenuItem>
+                      <DropdownMenuItem className="flex justify-center items-center gap-x-2">
+                        <ThemeUpdate />
+                      </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem>Logout</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-
               </div>
             </div>
           </div>
         </header>
         {/* Menu list */}
-        {isSidebar &&
+        {isSidebar && (
           <div className="fixed top-0 left-0 h-screen w-screen bg-card z-50 p-4">
             <div className="container mx-auto">
               <div className="flex justify-between items-center w-full py-[20px]">
                 <Link href="/" className="flex gap-x-[14px] ">
-                  <div className="bg-theme flex justify-center items-center p-[12px] rounded-[8px]">
-                    <Image
-                      src="/images/logo.svg"
-                      alt="logo"
-                      height={24}
-                      width={24}
-                      className="h-6 w-6"
-                    />
+                  <div className="bg-primary flex justify-center items-center p-[12px] rounded-[8px]">
+                    <DiamondPercent className="text-activeText h-6" />
                   </div>
                   <span className="self-center text-2xl font-semibold sm:text-2xl whitespace-nowrap">
                     DashFlow
                   </span>
                 </Link>
-                <div className='cursor-pointer' onClick={() => setIsSidebar(false)}><X /></div>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => setIsSidebar(false)}
+                >
+                  <X />
+                </div>
               </div>
               <ul className="space-y-2 font-medium">
                 {menu?.map((o) => {
@@ -119,21 +121,20 @@ function Header() {
                       <Link
                         href={o.url}
                         className={`flex items-center 2xl:px-6 lg:px-3 px-1 2xl:py-4 lg:py-2 py-1
-                          group ${pathname === o.pathname
-                            ? 'dark:text-text text-white rounded-lg bg-theme dark:hover:bg-gray-700'
-                            : 'dark:text-text rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700'
+                          group ${
+                            pathname === o.pathname
+                              ? 'text-activeText rounded-lg bg-primary dark:hover:bg-gray-700'
+                              : 'text-text rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700'
                           }`}
                       >
-                        <Image
-                          src={
-                            pathname === o.pathname ? o.icon : o.inactiveIcon
-                          }
-                          alt={o.title}
-                          height={32}
-                          width={32}
-                          className="2xl:mr-6 lg:mr:3 mr-1 2xl:h-8 lg:h-6 h-4 2xl:w-8 lg:w-6 w-4"
+                        <o.icon
+                          className={`${
+                            pathname === o.pathname
+                              ? 'text-activeText'
+                              : 'text-text'
+                          }, mr-2 h-4 w-4`}
                         />
-                        <span className="2xl:ms-3 lg:ms-2 ms-1 capitalize xl:text-lg lg:text-base text-sm text- leading-[27px]">
+                        <span className="2xl:ms-3 lg:ms-2 ms-1 capitalize xl:text-lg lg:text-base text-sm leading-[27px]">
                           {o.title}
                         </span>
                       </Link>
@@ -143,7 +144,7 @@ function Header() {
               </ul>
             </div>
           </div>
-        }
+        )}
       </div>
       {/*---------Desktop header---------------  */}
       <div className="md:block hidden">
@@ -216,7 +217,9 @@ function Header() {
                             <DropdownMenuItem>Setting</DropdownMenuItem>
                             <DropdownMenuItem>Status</DropdownMenuItem>
                             <DropdownMenuItem>Update Password</DropdownMenuItem>
-                            <DropdownMenuItem onClick={toggleTheme} className='capitalize'>{theme === 'dark' ? 'Dark' : 'Light'}</DropdownMenuItem>
+                            <DropdownMenuItem className="flex justify-center items-center gap-x-2">
+                              <ThemeUpdate />
+                            </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem>Logout</DropdownMenuItem>
                           </DropdownMenuContent>
