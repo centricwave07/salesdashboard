@@ -18,9 +18,10 @@ Welcome to the Dynamic Dashboard, an open-source project crafted by Centricwave 
 ### Screenshots
 ![Dashboard - Dark View](https://ik.imagekit.io/cw/Git/dark-default-theme.png?updatedAt=1722689360500)
 ![Dashboard - Light View](https://ik.imagekit.io/cw/Git/192-168-1-5-3000.png?updatedAt=1722689360320)
+![Dashboard - Full View](https://ik.imagekit.io/cw/Git/tab-dark-default-theme.png?updatedAt=1722689360251)
 
 ### Demo Video
-[![Watch the demo video](https://img.youtube.com/vi/abc123/0.jpg)](https://www.youtube.com/watch?v=4H6P3Y6c1nc)
+[![Watch the demo video](https://ik.imagekit.io/cw/Git/tab-dark-default-theme.png?updatedAt=1722689360251)](https://www.youtube.com/watch?v=4H6P3Y6c1nc)
 
 ## Getting Started
 
