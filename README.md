@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dynamic Dashboard - Next.js & Shadcn
+
+Welcome to the Dynamic Dashboard, an open-source project crafted by Centricwave LLP! This demo illustrates how to create a responsive and customizable dashboard using **Next.js** and **Shadcn**. The dashboard features:
+
+- **Customizable Color Themes**: Users can easily switch between different color schemes to personalize the look and feel.
+- **Day & Night Modes**: A toggle feature allows seamless switching between day and night themes, enhancing user experience in various lighting conditions.
+- **Responsive Design**: The dashboard is fully responsive and adapts beautifully to different device sizes, ensuring optimal usability on desktops, tablets, and mobile devices.
+
+## Features
+
+- **Next.js**: A powerful React framework for server-rendered applications and static websites.
+- **Shadcn**: A CSS framework for building accessible and customizable user interfaces.
+- **Theming**: Built-in support for dynamic theming with a user-friendly UI for switching between color schemes and day/night modes.
+- **Responsive Layout**: The layout adjusts perfectly across different devices, providing a consistent experience.
+
+## Screenshots & Demo Video
+
+### Screenshots
+![Dashboard - Desktop View](link-to-desktop-screenshot)
+![Dashboard - Tablet View](link-to-tablet-screenshot)
+![Dashboard - Mobile View](link-to-mobile-screenshot)
+
+### Demo Video
+[Watch the Demo Video](link-to-demo-video)
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
+1. **Clone the Repository**:
+
+[git clone https://github.com/centricwave/dynamic-dashboard-demo.git](https://github.com/centricwave07/salesdashboard.git)
+
+2. **Install Dependencies**:
+
+cd salesdashboard
+npm install
+
+3. **Start the Development Server**:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open your Browser**: Visit `http://localhost:3000` to view the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributions
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We welcome contributions to enhance this project. Feel free to open an issue or submit a pull request if you have any ideas or improvements.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Connect with Us
+- **Website**: [centricwave.com](https://centricwave.com)
+- **Email**: [contact@centricwave.com](mailto:info@centricwave.com)
+- **LinkedIn**: [Centricwave LLP LinkedIn](https://www.linkedin.com/company/centricwave)
+- **Twitter**: [@CentricwaveLLP](https://x.com/centricwavedevs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
