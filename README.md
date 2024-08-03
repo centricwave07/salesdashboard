@@ -21,7 +21,7 @@ Welcome to the Dynamic Dashboard, an open-source project crafted by Centricwave 
 ![Dashboard - Mobile View](link-to-mobile-screenshot)
 
 ### Demo Video
-[Watch the Demo Video](https://youtu.be/4H6P3Y6c1nc)
+[![Watch the demo video](https://img.youtube.com/vi/abc123/0.jpg)](https://youtu.be/4H6P3Y6c1nc)
 
 ## Getting Started
 
