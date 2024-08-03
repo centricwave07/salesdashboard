@@ -21,7 +21,7 @@ Welcome to the Dynamic Dashboard, an open-source project crafted by Centricwave 
 ![Dashboard - Mobile View](link-to-mobile-screenshot)
 
 ### Demo Video
-[Watch the Demo Video](link-to-demo-video)
+[Watch the Demo Video](https://youtu.be/4H6P3Y6c1nc)
 
 ## Getting Started
 
@@ -29,7 +29,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
 
-[git clone https://github.com/centricwave/dynamic-dashboard-demo.git](https://github.com/centricwave07/salesdashboard.git)
+[git clone https://github.com/centricwave/salesdashboard.git](https://github.com/centricwave07/salesdashboard.git)
 
 2. **Install Dependencies**:
 
